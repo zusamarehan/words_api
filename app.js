@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-app.get('/test', function(request, response){
+app.get('/getwords', function(request, response){
     connection.query('select * from words_api', function(error, results){
         if ( error ){
             response.status(400).send('Error in database operation');
@@ -20,6 +20,8 @@ app.get('/test', function(request, response){
         }
     });
 });
+
+app.get('/', (req, res) => res.send('Cool'));
 
 app.get('/usama', (req, res) => res.send('Hello usama!'));
 
