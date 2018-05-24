@@ -1,6 +1,9 @@
 {
   "name": "words",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.9.4"
+  },
   "description": "worsds api",
   "main": "app.js",
   "scripts": {
