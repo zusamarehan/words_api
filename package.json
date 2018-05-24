@@ -7,7 +7,7 @@
   "description": "worsds api",
   "main": "app.js",
   "scripts": {
-     "start": "node server.js"
+     "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
