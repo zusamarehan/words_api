@@ -3,16 +3,16 @@ const app = express();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'sql2.freemysqlhosting.net',
-  user     : 'sql2239642',
-  password : 'jW7*wD9*',
-  database : 'sql2239642'
+  host     : '35.200.173.249',
+  user     : 'root',
+  password : 'ZR_words_api_10_butter',
+  database : 'words_api_db'
 });
 connection.connect();
 
 
 app.get('/getwords', function(request, response){
-    connection.query('select * from words_api', function(error, results){
+    connection.query('select * from words_api_db', function(error, results){
         if ( error ){
             response.status(400).send('Error in database operation');
         } else {
