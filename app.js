@@ -12,7 +12,7 @@ connection.connect();
 
 
 app.get('/getwords', function(request, response){
-    connection.query('select * from words_api_db', function(error, results){
+    connection.query('select * from words', function(error, results){
         if ( error ){
             response.status(400).send('Error in database operation');
         } else {
