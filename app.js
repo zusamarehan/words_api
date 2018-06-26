@@ -3,7 +3,7 @@ const app = express();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'wordgameapi.000webhostapp.com',
+  host     : 'localhost',
   user     : 'id5874260_root',
   password : 'usamarehab_!@#$',
   database : 'id5874260_words_api'
