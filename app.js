@@ -23,7 +23,7 @@ app.get('/getwords', function(request, response){
 
 app.get('/getwords/:id', function(request, response){
      
-     connection.query('select * from words_api where id > '+request.params.id+' LIMIT 8', function(error, results){
+     connection.query('select * from words_api where id >= '+request.params.id+' LIMIT 8', function(error, results){
         if ( error ){
             response.status(400).send('Error in database operation');
         } else {
