@@ -3,10 +3,10 @@ const app = express();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'sql2.freemysqlhosting.net',
-  user     : 'sql2239642',
-  password : 'jW7*wD9*',
-  database : 'sql2239642'
+  host     : 'wordgameapi.000webhostapp.com',
+  user     : 'id5874260_root',
+  password : 'usamarehab_!@#$',
+  database : 'id5874260_words_api'
 });
 connection.connect();
 
