@@ -32,6 +32,17 @@ app.get('/getwords/:id', function(request, response){
     });
 });
 
+app.get('/attack/:id', function(request, response){
+     
+     connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, results){
+        if ( error ){
+            response.status(400).send('Error in database operation');
+        } else {
+            response.send(results);
+        }
+    });
+});
+
 app.get('/', (req, res) => res.send('Cool'));
 
 app.get('/usama', (req, res) => res.send('Hello usama!'));
