@@ -4,9 +4,9 @@ const app = express();
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'sql12.freemysqlhosting.net',
-  user     : 'sql12244912',
-  password : '2Drmp4WWwX',
-  database : 'sql12244912'
+  user     : 'sql12245330',
+  password : '6JiNkRgsDM',
+  database : 'sql12245330'
 });
 connection.connect();
 
