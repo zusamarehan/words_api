@@ -3,23 +3,13 @@ const app = express();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'sql12.freemysqlhosting.net',
-  user     : 'sql12245330',
-  password : '6JiNkRgsDM',
-  database : 'sql12245330'
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASS,
+  database : process.env.DB_USER
 });
 connection.connect();
 
-
-app.get('/getwords', function(request, response){
-    connection.query('select * from words_api', function(error, results){
-        if ( error ){
-            response.status(400).send('Error in database operation');
-        } else {
-            response.send(results);
-        }
-    });
-});
 
 app.get('/getwords/:id', function(request, response){
      
@@ -43,8 +33,9 @@ app.get('/attack/:id', function(request, response){
     });
 });
 
-app.get('/', (req, res) => res.send('Cool'));
+app.get('/', (req, res) => res.send('Working'));
 
-app.get('/usama', (req, res) => res.send('Hello usama!'));
+var port = process.env.PORT; // 2. Using process.env.PORT
+app.set('port', port);
 
-app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))
+app.listen(port);
