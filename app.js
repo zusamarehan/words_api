@@ -5,7 +5,7 @@ const app = express();
 var mysql      = require('mysql');
 
 var mysql_pool  = mysql.createPool({
-  connectionLimit : 10,
+  connectionLimit : 500,
   host     : process.env.DB_HOST,
   user     : process.env.DB_USER,
   password : process.env.DB_PASS,
@@ -41,13 +41,25 @@ app.get('/getwords/:id', function(request, response){
 
 app.get('/attack/:id', function(request, response){
      
-     connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, results){
-        if ( error ){
-            response.status(400).send(error);
-        } else {
-            response.send(results);
+      mysql_pool.getConnection(function(err, connection) {
+
+        if (err) {
+          connection.release();
+          console.log(' Error getting mysql_pool connection: ' + err);
+          throw err;
         }
-    });
+
+        connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, rows,fields){
+          if ( error ){
+                response.status(400).send(error);
+            } else {
+
+                response.send(rows);
+            }
+        });
+
+     });
+
 });
 
 app.get('/', (req, res) => res.send('Working'));
