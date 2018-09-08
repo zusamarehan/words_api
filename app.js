@@ -36,7 +36,7 @@ app.get('/getwords/:id', function(request, response){
       if ( error ){
             response.status(400).send(error);
         } else {
-            connection.release();
+
             response.send(rows);
         }
     });
@@ -47,28 +47,18 @@ app.get('/getwords/:id', function(request, response){
 
 app.get('/attack/:id', function(request, response){
      
-    mysql_pool.getConnection(function(err, connection) {
-
-      if (err) {
-        connection.release();
-        console.log(' Error getting mysql_pool connection: ' + err);
-        throw err;
-      }
-
-      connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, rows,fields){
+     connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, results){
         if ( error ){
-              response.status(400).send(error);
-          } else {
-              connection.release();
-              response.send(rows);
-          }
-      });
-
-   });
-
+            response.status(400).send(error);
+        } else {
+            response.send(results);
+        }
+    });
 });
 
 app.get('/', (req, res) => res.send('Working'));
+
+app.get('/checkUpdate', (req, res) => res.send(true));
 
 var port = process.env.port || process.env.PORT || 3000;
 
