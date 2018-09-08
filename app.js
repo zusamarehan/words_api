@@ -3,19 +3,13 @@ const app = express();
 
 
 var mysql      = require('mysql');
-// var connection = mysql.createConnection({
-//   host     : 'sql12.freemysqlhosting.net',
-//   user     : 'sql12245330',
-//   password : '6JiNkRgsDM',
-//   database : 'sql12245330'
-// });
 
 var mysql_pool  = mysql.createPool({
   connectionLimit : 10,
-  host     : 'sql12.freemysqlhosting.net',
-  user     : 'sql12245330',
-  password : '6JiNkRgsDM',
-  database : 'sql12245330'
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASS,
+  database : process.env.DB_USER
 });
 
 
@@ -58,7 +52,7 @@ app.get('/attack/:id', function(request, response){
 
 app.get('/', (req, res) => res.send('Working'));
 
-app.get('/checkUpdate', (req, res) => res.send(true));
+app.get('/checkUpdate', (req, res) => res.send(process.env.UPDATE_CHECK));
 
 var port = process.env.port || process.env.PORT || 3000;
 
