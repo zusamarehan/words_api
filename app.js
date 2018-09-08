@@ -35,7 +35,7 @@ app.get('/attack/:id', function(request, response){
 
 app.get('/', (req, res) => res.send('Working'));
 
-var port process.env.port || process.env.PORT || 1337;
+var port = process.env.port || process.env.PORT || 1337;
 
 app.listen(port, function() {
   console.log('Listening on ' + port);
