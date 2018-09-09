@@ -26,7 +26,7 @@ app.get('/getwords/:id', function(request, response){
     if (err) {
 //       connection.release();
       console.log(' Error getting mysql_pool connection: ' + err);
-      throw err;
+//       throw err;
     }
 
     connection.query('select * from words_api where id >= '+request.params.id+' LIMIT 8', function(error, rows,fields){
@@ -49,7 +49,7 @@ app.get('/attack/:id', function(request, response){
         if (err) {
 //           connection.release();
           console.log(' Error getting mysql_pool connection: ' + err);
-          throw err;
+//           throw err;
         }
 
         connection.query('select * from words_api order by rand() LIMIT '+(request.params.id), function(error, rows,fields){
