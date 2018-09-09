@@ -5,10 +5,12 @@ const app = express();
 var mysql      = require('mysql');
 
 var mysql_pool  = mysql.createPool({
-  connectionLimit : 500,
+  connectionLimit : 1000,
   host     : process.env.DB_HOST,
   user     : process.env.DB_USER,
+  connectTimeout  : 60 * 60 * 1000,
   aquireTimeout   : 60 * 60 * 1000,
+  timeout         : 60 * 60 * 1000,
   password : process.env.DB_PASS,
   database : process.env.DB_USER
 });
