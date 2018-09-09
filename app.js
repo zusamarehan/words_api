@@ -65,6 +65,29 @@ app.get('/attack/:id', function(request, response){
 
 });
 
+app.get('/allWords', function(request, response){
+     
+      mysql_pool.getConnection(function(err, connection) {
+
+        if (err) {
+//           connection.release();
+          console.log(' Error getting mysql_pool connection: ' + err);
+//           throw err;
+        }
+
+        connection.query('select * from words_api', function(error, rows,fields){
+          if ( error ){
+                response.status(400).send(error);
+            } else {
+                connection.release();
+                response.send(rows);
+            }
+        });
+
+     });
+
+});
+
 app.get('/', (req, res) => res.send('Working'));
 
 app.get('/checkUpdate', (req, res) => res.send(process.env.UPDATE_CHECK));
