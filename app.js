@@ -21,7 +21,7 @@ app.get('/getwords/:id', function(request, response){
   mysql_pool.getConnection(function(err, connection) {
 
     if (err) {
-      connection.release();
+//       connection.release();
       console.log(' Error getting mysql_pool connection: ' + err);
       throw err;
     }
@@ -44,7 +44,7 @@ app.get('/attack/:id', function(request, response){
       mysql_pool.getConnection(function(err, connection) {
 
         if (err) {
-          connection.release();
+//           connection.release();
           console.log(' Error getting mysql_pool connection: ' + err);
           throw err;
         }
