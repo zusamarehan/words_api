@@ -8,6 +8,7 @@ var mysql_pool  = mysql.createPool({
   connectionLimit : 500,
   host     : process.env.DB_HOST,
   user     : process.env.DB_USER,
+  aquireTimeout   : 60 * 60 * 1000,
   password : process.env.DB_PASS,
   database : process.env.DB_USER
 });
