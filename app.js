@@ -12,7 +12,8 @@ var mysql_pool  = mysql.createPool({
   aquireTimeout   : 60 * 60 * 1000,
   timeout         : 60 * 60 * 1000,
   password : process.env.DB_PASS,
-  database : process.env.DB_DATABASE
+  database : process.env.DB_DATABASE,
+  ssl : true
 });
 
 
