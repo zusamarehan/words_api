@@ -30,7 +30,7 @@ app.get('/getwords/:id', function(request, response){
 //       throw err;
     }
 
-    connection.query('select * from words_api where id >= '+request.params.id+' LIMIT 8', function(error, rows,fields){
+    connection.query('select * from words_api where id >= '+request.params.id+' order by rand()  LIMIT 8', function(error, rows,fields){
       if ( error ){
             response.status(400).send(error);
         } else {
