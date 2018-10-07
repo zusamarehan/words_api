@@ -4,6 +4,12 @@ const app = express();
 
 var mysql      = require('mysql');
 
+
+exports.envVar = (req, res) => {
+  // Sends 'bar' as response
+  res.send(process.env.FOO);
+};
+
 var mysql_pool  = mysql.createPool({
   connectionLimit : 1000,
   host     : process.env.DB_HOST,
